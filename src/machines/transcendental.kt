@@ -1,4 +1,9 @@
-val mConfigsTranscendental =
+package machines
+
+import BLANK
+import TuringMachine
+
+val transcendental =
     mapOf(
         "𝔟" to {
             symbol: Char, turingMachine: TuringMachine ->

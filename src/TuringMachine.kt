@@ -1,6 +1,21 @@
 class TuringMachine(){
-    var tape : MutableList<Char> = mutableListOf()
-    var index : Int = 0
+    private lateinit var tape : MutableList<Char>
+    private var index : Int = 0
+
+    fun run(mConfigurations: Map<String, (Char, TuringMachine) -> String>, firstMConfigId: String, iterations: Int){
+        clearTape()
+        var mConfigId = firstMConfigId
+        var mConfig = mConfigurations[mConfigId]
+
+        for (i in 0..iterations){
+            print("<$mConfigId>")
+            if (mConfig != null) {
+                mConfigId = mConfig(tape[index], this)
+                mConfig = mConfigurations[mConfigId]
+            }
+            println(this)
+        }
+    }
 
     override fun toString(): String {
         val unmarkedTape = "[,\\[\\]]".toRegex().replace(tape.toString(), " ")
@@ -35,19 +50,10 @@ class TuringMachine(){
         return this
     }
 
-    fun run(mConfigurations: Map<String, (Char, TuringMachine) -> String>, firstMConfigId: String, itterations: Int){
+    private fun clearTape(){
         tape = mutableListOf(BLANK)
-        var mConfigId = firstMConfigId
-        var mConfig = mConfigurations[mConfigId]
-        
-        for (i in 0..itterations){
-            print("<$mConfigId>")
-            if (mConfig != null) {
-                mConfigId = mConfig(tape[index], this)
-                mConfig = mConfigurations[mConfigId]
-            }
-            println(this)
-        }
     }
+
+
 }
 const val BLANK = '_'

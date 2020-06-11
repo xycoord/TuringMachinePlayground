@@ -1,4 +1,9 @@
-val mConfigsThird =
+package machines
+
+import BLANK
+import TuringMachine
+
+val third =
     mapOf(
         "𝔟" to {
             symbol: Char, turingMachine: TuringMachine ->
