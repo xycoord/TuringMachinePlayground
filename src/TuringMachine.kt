@@ -2,20 +2,22 @@ class TuringMachine(){
     private lateinit var tape : MutableList<Char>
     private var index : Int = 0
 
-    fun run(mConfigurations: Map<String, (Char, TuringMachine) -> String>, firstMConfigId: String, iterations: Int){
+    fun run(mConfigurations: Map<String, (Char, TuringMachine) -> String>, firstMConfigId: String, iterations: Int, verbose: Boolean = true){
         clearTape()
         var mConfigId = firstMConfigId
         var mConfig = mConfigurations[mConfigId]
 
         for (i in 0..iterations){
-            print(" ".repeat(10-mConfigId.length) +
-                    "<$mConfigId> ")
+            if (verbose)
+                print(" ".repeat(20-mConfigId.length) +
+                        "<$mConfigId> ")
             if (mConfig != null) {
                 mConfigId = mConfig(tape[index], this)
                 mConfig = mConfigurations[mConfigId]
             }
-            println(this)
+            if (verbose) println(this)
         }
+        if (!verbose) println(this)
     }
 
     override fun toString(): String {

@@ -4,7 +4,8 @@ fun main(){
     time {
 //        TuringMachine().run(machines.transcendental, "𝔟", 100)
 //        TuringMachine().run(machines.third, "𝔟", 100)
-        TuringMachine().run(machines.increment, "begin", 100)
+//        TuringMachine().run(machines.increment, "begin", 100)
+        TuringMachine().run(machines.root_two, "begin", 10000)
     }
 }
 
