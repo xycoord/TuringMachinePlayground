@@ -7,7 +7,7 @@ val third =
     mapOf(
         "𝔟" to {
             symbol: Char, turingMachine: TuringMachine ->
-            when (symbol){
+            when(symbol){
                 BLANK -> {
                     turingMachine
                         .print('0')

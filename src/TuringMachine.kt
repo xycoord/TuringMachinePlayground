@@ -8,7 +8,8 @@ class TuringMachine(){
         var mConfig = mConfigurations[mConfigId]
 
         for (i in 0..iterations){
-            print("<$mConfigId>")
+            print(" ".repeat(10-mConfigId.length) +
+                    "<$mConfigId> ")
             if (mConfig != null) {
                 mConfigId = mConfig(tape[index], this)
                 mConfig = mConfigurations[mConfigId]
@@ -26,9 +27,9 @@ class TuringMachine(){
 
     fun print(symbol : Char) : TuringMachine{
         if (index < tape.size)
-            tape.set(index,symbol)
+            tape.set(index, symbol)
         else
-            tape.add(index,symbol)
+            tape.add(index, symbol)
         return this
     }
 
